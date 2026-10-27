@@ -1,1 +1,0 @@
-Buka index.html dalam Chrome. Grafik 6 panel dipotong terus daripada gambar rujukan yang diluluskan. Butiran ibu bapa, atur cara dan lokasi tercetak dalam imej hanyalah contoh. RSVP disimpan pada browser sahaja. Letak music.mp3 untuk muzik.
