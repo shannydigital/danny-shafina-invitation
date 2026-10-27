@@ -159,7 +159,57 @@ body.intro-active { overflow: hidden; }
   html { scroll-behavior: auto; }
   .intro, .intro *, .intro *::before, .intro *::after { animation: none !important; transition: none !important; }
 }
-</style><noscript><style>.intro{display:none}body.intro-active{overflow:auto}</style></noscript></head><body class="intro-active"><div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="opening-title" data-opening-version="botanical-3d-v2">
+
+/* Ivory paper and photographic hydrangeas, matching the supplied reference. */
+.intro { background: #fff; }
+.intro::before,.intro::after,.intro-art,.opening-crest { display:none; }
+.intro-inner { width:min(100%,900px); padding:32px 0; }
+.opening-names,.opening-description,.opening-date { display:none; }
+.opening-kicker { color:#638098; font-size:10px; letter-spacing:.23em; margin:0; }
+.envelope-button { width:100%; max-width:820px; margin:38px 0 25px; }
+.envelope-scene { aspect-ratio:1.5; transform:none; }
+.envelope-scene::after { display:none; }
+.envelope-shell { display:block; position:absolute; left:18%; top:24%; width:64%; height:60%; perspective:1200px; }
+.opening-florals { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; z-index:7; pointer-events:none; transition:opacity .7s .65s,transform 1s .5s; }
+.env-back { border-radius:2px; background:linear-gradient(135deg,#fcfaf5,#e9e4d9); box-shadow:0 7px 15px #756d5524,inset 0 0 0 1px #e0ddd2; }
+.env-back::after { background:repeating-linear-gradient(35deg,#fff4 0 1px,transparent 1px 4px),linear-gradient(135deg,#d5d0c3,#efebe1); }
+.env-side { border-radius:2px; }
+.env-side-left { background:linear-gradient(115deg,#f9f7f0,#e6e1d5); }
+.env-side-right { background:linear-gradient(245deg,#faf8f2,#e2dccf); }
+.env-front { border-radius:0 0 2px 2px; background:linear-gradient(155deg,#fffcf4,#ece7db); box-shadow:inset 0 -1px 2px #aaa28d4a; }
+.env-front::before { border-color:#fff9; }
+.env-flap { height:78%; filter:drop-shadow(0 2px 1px #74684b33); }
+.env-flap-face { border-radius:2px 2px 0 0; }
+.env-flap-outside { background:linear-gradient(155deg,#fffefb,#f2eee5 75%,#e5dfd2); }
+.env-flap-outside::before { inset:0; background:repeating-linear-gradient(21deg,#c2b89c0c 0 1px,transparent 1px 3px),repeating-linear-gradient(111deg,#aa9e890a 0 1px,transparent 1px 3px); }
+.env-flap-outside::after { display:none; }
+.env-flap-inside { background:linear-gradient(180deg,#d8d2c4,#f6f2e9); }
+.env-flap-inside::after { background:repeating-linear-gradient(35deg,#fff4 0 1px,transparent 1px 6px); }
+.flap-inscription { position:absolute; left:8%; right:8%; top:17%; display:flex; flex-direction:column; align-items:center; color:#193d55; gap:8px; }
+.flap-names { font:400 clamp(19px,5.1vw,45px)/1.3 "Great Vibes","Snell Roundhand",cursive; white-space:nowrap; }
+.flap-rule { display:flex; align-items:center; gap:7px; width:64%; color:#4c7795; font:clamp(9px,1.8vw,17px) Georgia,serif; }
+.flap-rule::before,.flap-rule::after { content:''; height:1px; flex:1; background:linear-gradient(90deg,transparent,#52748b); }
+.flap-rule::after { transform:rotate(180deg); }
+.flap-date { font:400 clamp(8px,2.1vw,17px)/1.3 Georgia,serif; letter-spacing:.1em; }
+.env-seal { top:77%; width:clamp(40px,10.5vw,83px); transform:translate(-50%,-50%); border-color:#7699af; border-radius:45% 50% 44% 49%; background:radial-gradient(ellipse at 30% 20%,#d5e7f1,#7ea7c1 55%,#466e8d); box-shadow:0 4px 5px #213f5152,inset 1px 2px 3px #e9f4ff,inset -2px -2px 3px #446c8c; }
+.env-seal::before { inset:6px; border-color:#486e88; box-shadow:inset 0 1px 2px #d9edfc,0 1px 2px #d9edfc; }
+.env-seal::after { inset:9px; border-color:#d5e6f799; }
+.env-seal svg { width:56%; height:56%; color:#f5fafc; filter:drop-shadow(0 1px 1px #234d70); }
+.env-sparkle { display:none; }
+.env-letter { background:linear-gradient(135deg,#fffef9,#fffdf6); border-color:#ddd5c4; }
+.env-letter::before { border-color:#c9d6dd; }
+.env-letter strong { font-size:clamp(18px,4.4vw,33px); }
+.env-letter-label { font-size:clamp(5px,1.2vw,9px); }
+.env-letter { font-size:clamp(8px,1.7vw,13px); gap:4px; }
+.intro-label { margin-top:0; background:linear-gradient(120deg,#8cb9d3,#6d97b3); }
+.opening-hint { margin-top:13px; }
+.intro.opening .envelope-scene { transform:translateY(10px); }
+.intro.opening .opening-florals { opacity:0; transform:scale(1.07); }
+.intro.opening .env-letter { transform:translateY(-91%); }
+@media(hover:hover) and (pointer:fine) { .envelope-button:not(:disabled):hover .envelope-scene { transform:translateY(-3px); } }
+@media(max-width:520px) { .envelope-button { margin:48px 0 30px; } .flap-inscription { gap:5px; } .env-letter { padding:8px 5px; } .env-letter .env-ornament { height:15px; } .env-letter::before { inset:5px; } .env-letter::after { inset:8px; } }
+@media(max-height:620px) { .intro-inner { padding:24px 0; } .envelope-button { width:min(100%,600px); margin:20px 0; } }
+</style><noscript><style>.intro{display:none}body.intro-active{overflow:auto}</style></noscript></head><body class="intro-active"><div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="opening-title" data-opening-version="ivory-hydrangea-v3">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient id="petal-white" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffefa"/><stop offset=".65" stop-color="#fff"/><stop offset="1" stop-color="#dcebf1"/></linearGradient>
@@ -194,13 +244,13 @@ body.intro-active { overflow: hidden; }
       <p class="opening-description">Seindah pertemuan, semanis ikatan.</p>
     </div>
     <button class="envelope-button" id="open-invitation" type="button" aria-label="Buka kad jemputan Shafina dan Danny">
-      <span class="envelope-scene" aria-hidden="true">
+      <span class="envelope-scene" aria-hidden="true"><span class="envelope-shell">
         <span class="env-back"></span>
         <span class="env-letter"><svg class="env-ornament" viewBox="0 0 76 44"><use href="#opening-crest-art"/></svg><span class="env-letter-label">Dengan penuh kesyukuran</span><strong>Shafina &amp; Danny</strong><span class="env-letter-rule"></span><span>26 Disember 2026</span></span>
         <span class="env-side env-side-left"></span><span class="env-side env-side-right"></span><span class="env-front"></span>
-        <span class="env-flap"><span class="env-flap-face env-flap-outside"></span><span class="env-flap-face env-flap-inside"></span></span>
-        <span class="env-seal"><span>DS</span></span>
-        <span class="env-sparkle env-sparkle-one">✧</span><span class="env-sparkle env-sparkle-two">✧</span>
+        <span class="env-flap"><span class="env-flap-face env-flap-outside"><span class="flap-inscription"><span class="flap-names">Shafina &amp; Danny</span><span class="flap-rule">❦</span><span class="flap-date">26 Disember 2026</span></span></span><span class="env-flap-face env-flap-inside"></span></span>
+        <span class="env-seal"><svg viewBox="0 0 50 60" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M23 55Q25 29 10 12M24 55Q30 30 39 19M23 55Q15 32 8 30M24 55Q29 35 42 33M24 55Q29 22 24 7"/><g fill="currentColor" stroke-width=".5"><circle cx="10" cy="12" r="2.7"/><circle cx="39" cy="19" r="2.5"/><circle cx="8" cy="30" r="2.7"/><circle cx="42" cy="33" r="2.7"/><circle cx="24" cy="7" r="2.7"/><circle cx="15" cy="22" r="2"/><circle cx="32" cy="31" r="2"/><circle cx="25" cy="20" r="2"/></g></svg></span>
+        <span class="env-sparkle env-sparkle-one">✧</span><span class="env-sparkle env-sparkle-two">✧</span></span><img class="opening-florals" src="assets/opening-florals-v3.webp" alt="" width="1536" height="1024" fetchpriority="high">
       </span>
     </button>
     <p class="opening-date"><i aria-hidden="true"></i><span>DISEMBER</span><b>26</b><span>2026</span><i aria-hidden="true"></i></p>
