@@ -209,6 +209,15 @@ body.intro-active { overflow: hidden; }
 @media(hover:hover) and (pointer:fine) { .envelope-button:not(:disabled):hover .envelope-scene { transform:translateY(-3px); } }
 @media(max-width:520px) { .envelope-button { margin:48px 0 30px; } .flap-inscription { gap:5px; } .env-letter { padding:8px 5px; } .env-letter .env-ornament { height:15px; } .env-letter::before { inset:5px; } .env-letter::after { inset:8px; } }
 @media(max-height:620px) { .intro-inner { padding:24px 0; } .envelope-button { width:min(100%,600px); margin:20px 0; } }
+
+/* Blend the invitation artwork into the white page at the section edges. */
+#details img,#calendar img,#schedule .schedule-art img {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent), linear-gradient(to bottom, transparent, #000 3%, #000 97%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 2%, #000 98%, transparent), linear-gradient(to bottom, transparent, #000 3%, #000 97%, transparent);
+  mask-composite: intersect;
+}
+#details,#calendar,#schedule { background:#fff; }
 </style><noscript><style>.intro{display:none}body.intro-active{overflow:auto}</style></noscript></head><body class="intro-active"><div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="opening-title" data-opening-version="ivory-hydrangea-v3">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
