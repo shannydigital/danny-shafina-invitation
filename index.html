@@ -254,13 +254,11 @@ body.intro-active { overflow: hidden; }
       </span>
     </button>
     <p class="opening-date"><i aria-hidden="true"></i><span>DISEMBER</span><b>26</b><span>2026</span><i aria-hidden="true"></i></p>
-    <button class="intro-label" id="open-invitation-label" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>Buka jemputan<span aria-hidden="true">↗</span></button>
     <p class="opening-hint">Sentuh sampul untuk membuka kad</p>
   </div>
 </div>
 <main><section id="cover"><img src="assets/cover.png?v=skyblue-20261027" alt="Kad jemputan Danny dan Shafina, 26 December 2026" fetchpriority="high"></section><section id="details"><img src="assets/details.png?v=skyblue-20261027" alt="Butiran majlis pertunangan Che Shafina binti Mohammad Yusoff dan Danny Fitri Hakimi bin Kapli" loading="lazy"></section><section id="calendar" class="calendar"><img src="assets/calendar.png?v=skyblue-20261027" alt="Kalendar Disember 2026 dengan tarikh 26 ditandakan" loading="lazy"></section><section id="schedule" class="extra"><div class="schedule-art"><img src="https://raw.githubusercontent.com/shannydigital/danny-shafina-invitation/main/assets/schedule.png?v=skyblue-20261027" alt="Atur cara majlis pertunangan bermula jam 4 petang hingga 9 malam" loading="lazy"><span class="schedule-heading">Seuntai<br><span>Doa</span></span><span class="schedule-monogram" aria-label="Danny dan Shafina">DS</span></div></section><section id="location" class="extra"><div><div class="location-art"><img src="https://raw.githubusercontent.com/shannydigital/danny-shafina-invitation/main/assets/location.png?v=skyblue-20261027" alt="Lokasi majlis di 99 Taman Putra 3 Azalea Sungai Buloh dan jemputan RSVP" loading="lazy"><a class="map-hotspot" href="https://maps.app.goo.gl/uztdhXfQQa1LdxfSA" target="_blank" rel="noopener noreferrer" aria-label="Buka lokasi majlis di Google Maps"></a><button class="rsvp-hotspot" type="button" aria-label="Buka borang RSVP" title="Sahkan kehadiran"></button></div></div></section><footer>Dengan penuh kesyukuran, kami menantikan kehadiran anda.</footer></main><nav class="actions" aria-label="Navigasi jemputan"><a class="action" href="#cover">Utama</a><a class="action" href="#details">Jemputan</a><a class="action" href="#calendar">Tarikh</a><a class="action" href="#schedule">Atur Cara</a><a class="action" href="#location">Lokasi</a><button id="music" type="button" aria-pressed="false">♫ Muzik</button></nav><dialog class="rsvp-dialog" id="rsvp-dialog" aria-labelledby="rsvp-title"><button class="rsvp-close" type="button" aria-label="Tutup borang RSVP">×</button><div class="rsvp-heading"><span class="rsvp-ornament" aria-hidden="true">✧ ❦ ✧</span><p class="rsvp-eyebrow">MAJLIS PERTUNANGAN</p><h2 id="rsvp-title">RSVP</h2><p class="rsvp-names">Danny &amp; Shafina</p><p class="rsvp-deadline">Sila sahkan sebelum 20 Disember 2026</p></div><form class="rsvp-custom" id="pretty-rsvp" action="https://docs.google.com/forms/d/e/1FAIpQLSdREAH98t9r4rcavMe46Gw5P6v7GorP3nxZjqoWQdd4_M9Ehw/formResponse" method="POST" target="rsvp-result"><label for="rsvp-name">Nama tetamu</label><input id="rsvp-name" name="entry.320683155" autocomplete="name" maxlength="100" placeholder="Nama penuh" required><div class="rsvp-grid"><div><label for="rsvp-adults">Dewasa</label><input id="rsvp-adults" name="entry.877025738" type="number" min="1" max="100" value="1" required><small>Termasuk anda</small></div><div><label for="rsvp-children">Kanak-kanak</label><input id="rsvp-children" name="entry.1275509979" type="number" min="0" max="100" value="0" required><small>Jika tiada, isi 0</small></div></div><button type="submit" class="rsvp-send">Hantar RSVP ✦</button><p class="rsvp-note">Terima kasih kerana mengesahkan kehadiran.</p></form><div id="rsvp-result-wrap" hidden><div class="rsvp-result-card" role="status"><div class="rsvp-result-icon">✦</div><h3>Terima kasih</h3><p>RSVP anda telah dihantar untuk diproses.</p><p class="rsvp-result-hint">Jika terdapat masalah, sila hubungi tuan rumah.</p></div><iframe name="rsvp-result" title="Respons Google" hidden></iframe></div></dialog><audio id="invitation-audio" src="assets/music.m4a" preload="none" loop></audio><script>const button=document.querySelector('#music'),audio=document.querySelector('#invitation-audio');const intro=document.querySelector('#intro');
 const openInvitation=document.querySelector('#open-invitation');
-const openLabel=document.querySelector('#open-invitation-label');
 const invitationMain=document.querySelector('main');
 const invitationNav=document.querySelector('.actions');
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
@@ -282,7 +280,6 @@ function startInvitation(){
   if(openingStarted)return;
   openingStarted=true;
   openInvitation.disabled=true;
-  openLabel.disabled=true;
   intro.classList.add('opening');
   audio.play().catch(()=>{});
   if(motionPreference.matches){revealInvitation();return;}
@@ -291,10 +288,5 @@ function startInvitation(){
   setTimeout(revealInvitation,2750);
 }
 openInvitation.addEventListener('click',startInvitation);
-openLabel.addEventListener('click',startInvitation);
-intro.addEventListener('keydown',event=>{
-  if(event.key!=='Tab'||openingStarted)return;
-  if(event.shiftKey&&document.activeElement===openInvitation){event.preventDefault();openLabel.focus();}
-  else if(!event.shiftKey&&document.activeElement===openLabel){event.preventDefault();openInvitation.focus();}
-});
+intro.addEventListener('keydown',event=>{if(event.key==='Tab'&&!openingStarted){event.preventDefault();openInvitation.focus();}});
 button.addEventListener('click',async()=>{if(audio.paused){try{await audio.play()}catch(e){button.textContent='⚠ Muzik tiada';button.setAttribute('aria-pressed','false');alert('Fail muzik belum dimuat naik. Sila tambah assets/music.m4a ke GitHub.')}}else{audio.pause()}});audio.addEventListener('play',()=>{button.textContent='❚❚ Henti';button.setAttribute('aria-pressed','true')});audio.addEventListener('pause',()=>{button.textContent='♫ Muzik';button.setAttribute('aria-pressed','false')});const rsvpDialog=document.querySelector('#rsvp-dialog'),rsvpTrigger=document.querySelector('.rsvp-hotspot'),unusedRsvp=null;rsvpTrigger.addEventListener('click',()=>rsvpDialog.showModal());document.querySelector('.rsvp-close').addEventListener('click',()=>rsvpDialog.close());rsvpDialog.addEventListener('click',e=>{if(e.target===rsvpDialog)rsvpDialog.close()});document.querySelector('#pretty-rsvp').addEventListener('submit',()=>{document.querySelector('#pretty-rsvp').hidden=true;document.querySelector('#rsvp-result-wrap').hidden=false});</script></body></html>
